@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linha do Tempo Interativa</title>
+  <style>
+    body {
+      background-color: #121212;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: white;
+    }
+
+    header {
+      text-align: center;
+      background: #1f1f1f;
+      padding: 30px 20px;
+      font-size: 2em;
+      color: #ff9800;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 40px;
+    }
+
+    .card {
+      position: relative;
+      background: #1e1e1e;
+      border-radius: 15px;
+      overflow: hidden;
+      height: 200px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      box-shadow: 0 0 20px rgba(255, 152, 0, 0.2);
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card-title {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #ff9800;
+    }
+
+    .card-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.9);
+      color: #fff;
+      padding: 20px;
+      height: 100%;
+      width: 100%;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .card:hover .card-content {
+      opacity: 1;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+
+  <header>Linha do Tempo Interativa</header>
+
+  <div class="container">
+
+    <!-- PRÉ-HISTÓRIA -->
+    <div class="card">
+      <div class="card-title">Pré-História</div>
+      <div class="card-content">
+        <h3>Paleolítico</h3>
+        <p>Período das cavernas, com ferramentas de pedra lascada e vida nômade.</p>
+        <h3>Neolítico</h3>
+        <p>Começo da agricultura, domesticação de animais e surgimento das aldeias.</p>
+        <h3>Idade dos Metais</h3>
+        <p>Uso de cobre, bronze e ferro. Aumenta o comércio e surgem as primeiras cidades.</p>
+      </div>
+    </div>
+
+    <!-- IDADE ANTIGA -->
+    <div class="card">
+      <div class="card-title">Idade Antiga</div>
+      <div class="card-content">
+        <h3>Antiguidade Oriental</h3>
+        <p>Civilizações como Egito, Mesopotâmia e China, com escrita e religião politeísta.</p>
+        <h3>Antiguidade Clássica</h3>
+        <p>Grécia e Roma com destaque na filosofia, democracia e direito.</p>
+      </div>
+    </div>
+
+    <!-- IDADE MODERNA -->
+    <div class="card">
+      <div class="card-title">Idade Moderna</div>
+      <div class="card-content">
+        <h3>Renascimento</h3>
+        <p>Valorização da ciência, arte e do ser humano. Leonardo da Vinci e Michelangelo brilham.</p>
+        <h3>Grandes Navegações</h3>
+        <p>Explorações marítimas e descobrimentos. Expansão territorial da Europa.</p>
+        <h3>Reforma Protestante</h3>
+        <p>Movimento religioso que criticou a Igreja Católica, liderado por Martinho Lutero.</p>
+      </div>
+    </div>
+
+    <!-- IDADE CONTEMPORÂNEA -->
+    <div class="card">
+      <div class="card-title">Idade Contemporânea</div>
+      <div class="card-content">
+        <h3>Revolução Francesa</h3>
+        <p>Derrubada da monarquia e nascimento da república com ideias de liberdade e igualdade.</p>
+        <h3>Revolução Industrial</h3>
+        <p>Máquinas e fábricas mudaram o mundo, com grande urbanização e novas tecnologias.</p>
+        <h3>Guerras Mundiais</h3>
+        <p>Conflitos globais que marcaram o século XX, com milhões de mortos e mudanças políticas.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>Trabalho de História — Vítor Hugo Reis</footer>
+
+</body>
+</html>
