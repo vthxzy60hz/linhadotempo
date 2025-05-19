@@ -3,168 +3,200 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Linha do Tempo Interativa</title>
+  <title>Linha do Tempo da História</title>
   <style>
     body {
-      background-color: #121212;
-      font-family: 'Segoe UI', sans-serif;
       margin: 0;
-      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #1e1e1e;
       color: white;
     }
-
-    header {
-      text-align: center;
-      background: #1f1f1f;
-      padding: 30px 20px;
-      font-size: 2em;
-      color: #ff9800;
-    }
-
     .timeline {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       position: relative;
-      max-width: 1200px;
-      margin: auto;
-      padding: 40px 0;
+      padding: 50px 20px;
     }
-
-    .timeline::after {
+    .timeline::before {
       content: '';
       position: absolute;
       width: 6px;
-      background-color: #ff9800;
+      background-color: orange;
       top: 0;
       bottom: 0;
       left: 50%;
-      margin-left: -3px;
+      transform: translateX(-50%);
     }
-
-    .container {
-      padding: 20px 40px;
+    .event {
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      justify-content: space-between;
+      margin: 50px 0;
       position: relative;
-      background-color: inherit;
-      width: 50%;
     }
-
-    .left {
-      left: 0;
+    .event:nth-child(even) .text {
+      order: 2;
+      text-align: left;
     }
-
-    .right {
-      left: 50%;
+    .event:nth-child(even) .image {
+      order: 1;
     }
-
-    .content {
-      padding: 20px;
-      background-color: #1e1e1e;
-      position: relative;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(255, 152, 0, 0.3);
-      transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-
-    .content:hover {
-      transform: scale(1.05);
-    }
-
-    .container::after {
-      content: " ";
-      position: absolute;
-      width: 25px;
-      height: 25px;
-      right: -17px;
-      background-color: #ff9800;
-      border: 4px solid #1f1f1f;
-      top: 15px;
-      border-radius: 50%;
+    .text, .image {
+      width: 45%;
       z-index: 1;
     }
-
-    .right::after {
-      left: -16px;
+    .text h2 {
+      color: orange;
     }
-
-    .left {
-      float: left;
-      clear: both;
+    .text p {
+      font-size: 1rem;
+      line-height: 1.5;
     }
-
-    .right {
-      float: right;
-      clear: both;
+    .image img {
+      width: 100%;
+      border-radius: 8px;
     }
-
-    .content h2 {
-      margin-top: 0;
-      color: #ff9800;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      color: #999;
-    }
-
     @media screen and (max-width: 768px) {
-      .container {
-        width: 100%;
-        padding-left: 70px;
-        padding-right: 25px;
+      .event {
+        flex-direction: column;
+        align-items: center;
       }
-      .timeline::after {
-        left: 31px;
-      }
-      .right {
-        left: 0%;
-      }
-      .right::after {
-        left: 15px;
+      .text, .image {
+        width: 90%;
+        text-align: center;
       }
     }
   </style>
 </head>
 <body>
-
-  <header>Linha do Tempo Interativa</header>
-
   <div class="timeline">
-    <div class="container left">
-      <div class="content">
+
+    <!-- Pré-História -->
+    <div class="event">
+      <div class="text">
         <h2>Pré-História</h2>
-        <p><strong>Paleolítico:</strong> Período das cavernas, ferramentas de pedra e vida nômade.</p>
-        <p><strong>Neolítico:</strong> Agricultura, aldeias e início da vida sedentária.</p>
-        <p><strong>Idade dos Metais:</strong> Uso do cobre, bronze e ferro, e surgimento das cidades.</p>
+        <p>Período anterior à escrita, marcado por uma vida nômade e uso de ferramentas rudimentares.</p>
+      </div>
+      <div class="image">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/Neanderthal_Prehistoric.jpg" alt="Pré-História">
       </div>
     </div>
 
-    <div class="container right">
-      <div class="content">
-        <h2>Idade Antiga</h2>
-        <p><strong>Antiguidade Oriental:</strong> Egito, Mesopotâmia e desenvolvimento da escrita.</p>
-        <p><strong>Antiguidade Clássica:</strong> Grécia e Roma, filosofia e democracia.</p>
+    <div class="event">
+      <div class="text">
+        <h2>Paleolítico</h2>
+        <p>Fase mais antiga da Pré-História, com humanos caçadores-coletores vivendo em cavernas.</p>
+      </div>
+      <div class="image">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Altamira_bison.jpg" alt="Paleolítico">
       </div>
     </div>
 
-    <div class="container left">
-      <div class="content">
-        <h2>Idade Moderna</h2>
-        <p><strong>Renascimento:</strong> Valorização das artes, ciências e do humanismo.</p>
-        <p><strong>Grandes Navegações:</strong> Descobrimentos marítimos e expansão territorial.</p>
-        <p><strong>Reforma Protestante:</strong> Ruptura com a Igreja Católica liderada por Lutero.</p>
+    <div class="event">
+      <div class="text">
+        <h2>Neolítico</h2>
+        <p>Agricultura, domesticação de animais e ferramentas mais elaboradas surgem.</p>
+      </div>
+      <div class="image">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Neolithic_farmhouse_reconstruction.jpg" alt="Neolítico">
       </div>
     </div>
 
-    <div class="container right">
-      <div class="content">
-        <h2>Idade Contemporânea</h2>
-        <p><strong>Revolução Francesa:</strong> Queda da monarquia e ideias de liberdade e igualdade.</p>
-        <p><strong>Revolução Industrial:</strong> Máquinas, fábricas e urbanização acelerada.</p>
-        <p><strong>Guerras Mundiais:</strong> Conflitos globais do século XX que mudaram o mundo.</p>
+    <div class="event">
+      <div class="text">
+        <h2>Idade dos Metais</h2>
+        <p>Uso de cobre, bronze e ferro. Início da urbanização e surgimento das cidades.</p>
+      </div>
+      <div class="image">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Bronze_age_tools.jpg" alt="Idade dos Metais">
       </div>
     </div>
+
+    <!-- Idade Antiga -->
+    <div class="event">
+      <div class="text">
+        <h2>Antiguidade Oriental</h2>
+        <p>Período das primeiras grandes civilizações: Egito, Mesopotâmia, Índia e China Antigas.</p>
+      </div>
+      <div class="image">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Great_Sphinx_of_Giza_-_20080716a.jpg" alt="Antiguidade Oriental">
+      </div>
+    </div>
+
+    <div class="event">
+      <div class="text">
+        <h2>Antiguidade Clássica</h2>
+        <p>Grécia e Roma antigas, desenvolvimento da democracia, filosofia e direito romano.</p>
+      </div>
+      <div class="image">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Parthenon_from_west.jpg" alt="Antiguidade Clássica">
+      </div>
+    </div>
+
+    <!-- Idade Moderna -->
+    <div class="event">
+      <div class="text">
+        <h2>Renascimento</h2>
+        <p>Movimento cultural, artístico e científico que resgatou ideais clássicos da antiguidade.</p>
+      </div>
+      <div class="image">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/25/Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg" alt="Renascimento">
+      </div>
+    </div>
+
+    <div class="event">
+      <div class="text">
+        <h2>Reformas Religiosas</h2>
+        <p>Movimentos que questionaram a Igreja Católica, como a Reforma Protestante.</p>
+      </div>
+      <div class="image">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Martin_Luther%2C_Deliverer_of_the_German_People.jpg" alt="Reformas Religiosas">
+      </div>
+    </div>
+
+    <div class="event">
+      <div class="text">
+        <h2>Expansão Marítima</h2>
+        <p>Grandes navegações europeias que descobriram novos continentes e rotas comerciais.</p>
+      </div>
+      <div class="image">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/Gama%27s_fleet.png" alt="Expansão Marítima">
+      </div>
+    </div>
+
+    <!-- Idade Contemporânea -->
+    <div class="event">
+      <div class="text">
+        <h2>Revolução Francesa</h2>
+        <p>Queda da monarquia na França e surgimento de ideais democráticos modernos.</p>
+      </div>
+      <div class="image">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/54/Prise_de_la_Bastille.jpg" alt="Revolução Francesa">
+      </div>
+    </div>
+
+    <div class="event">
+      <div class="text">
+        <h2>Era Industrial</h2>
+        <p>Transição para a produção mecanizada, com impactos econômicos e sociais.</p>
+      </div>
+      <div class="image">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Mill_Girl_by_Lewis_Hine.jpg" alt="Era Industrial">
+      </div>
+    </div>
+
+    <div class="event">
+      <div class="text">
+        <h2>Mundo Atual</h2>
+        <p>Sociedade globalizada, avanços tecnológicos e desafios socioambientais.</p>
+      </div>
+      <div class="image">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Globalization_map.png" alt="Mundo Atual">
+      </div>
+    </div>
+
   </div>
-
-  <footer>Trabalho de História — Vítor Hugo Reis</footer>
-
 </body>
 </html>
