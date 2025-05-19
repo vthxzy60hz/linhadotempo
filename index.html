@@ -13,7 +13,7 @@
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #2e003e, #6c0c7f);
+      background: #0e0e0e;
       color: #fff;
       scroll-behavior: smooth;
     }
@@ -25,39 +25,41 @@
       margin: auto;
     }
 
-    .line {
+    .wave-line {
       position: absolute;
       left: 50%;
       top: 0;
-      width: 4px;
+      width: 6px;
       height: 100%;
-      background: linear-gradient(#fff, #a85ae6);
-      border-radius: 2px;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 rgba(255, 255, 255, 0.3); }
-      100% { box-shadow: 0 0 20px rgba(255, 255, 255, 0); }
+      background: repeating-linear-gradient(
+        180deg,
+        #a85ae6,
+        #a85ae6 10px,
+        transparent 10px,
+        transparent 20px
+      );
+      transform: translateX(-50%);
+      z-index: 0;
     }
 
     .era {
       margin: 40px 0;
       position: relative;
       padding-left: 80px;
+      z-index: 1;
     }
 
     .era h2 {
       font-size: 2em;
       margin-bottom: 20px;
-      color: #e6cfff;
+      color: #a85ae6;
     }
 
     .event {
       position: relative;
       margin-bottom: 20px;
       padding: 10px 15px;
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.05);
       border-left: 4px solid #a85ae6;
       border-radius: 10px;
       transition: transform 0.3s, background 0.3s;
@@ -65,7 +67,7 @@
     }
 
     .event:hover {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: rgba(255, 255, 255, 0.1);
       transform: scale(1.03);
     }
 
@@ -80,7 +82,7 @@
     .event .info {
       display: none;
       margin-top: 10px;
-      color: #ddd;
+      color: #d4c2e6;
       line-height: 1.4em;
     }
 
@@ -95,6 +97,7 @@
       background-color: rgba(0, 0, 0, 0.4);
       font-size: 0.9em;
       margin-top: 40px;
+      color: #a85ae6;
     }
 
     @keyframes fadeIn {
@@ -105,7 +108,7 @@
 </head>
 <body>
   <main class="timeline">
-    <div class="line"></div>
+    <div class="wave-line"></div>
 
     <section class="era">
       <h2>Pré-História</h2>
@@ -189,7 +192,7 @@
   </main>
 
   <footer>
-    <p>Feito por Vítor Hugo Reis</p>
+    <p>Feito com 💜 por Vítor Hugo Reis</p>
   </footer>
 </body>
 </html>
