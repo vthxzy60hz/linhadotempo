@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Linha do Tempo da História</title>
+  <title>Linha do Tempo Histórica</title>
   <style>
     * {
       margin: 0;
@@ -13,171 +13,156 @@
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #1a001f, #3b0045);
+      background: url('https://cdn.pixabay.com/photo/2015/06/19/21/24/board-815315_1280.jpg') no-repeat center center fixed;
+      background-size: cover;
       color: #fff;
-      scroll-behavior: smooth;
-      overflow-x: hidden;
-    }
-
-    .wave {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 300px;
-      background: url('https://i.imgur.com/LDpPvKD.png') repeat-x;
-      background-size: contain;
-      z-index: -1;
-      opacity: 0.15;
-      animation: moveWave 30s linear infinite;
-    }
-
-    @keyframes moveWave {
-      from { background-position-x: 0; }
-      to { background-position-x: 1000px; }
     }
 
     .timeline {
-      padding: 100px 20px 60px;
+      padding: 60px 30px;
       display: flex;
       flex-direction: column;
-      gap: 60px;
+      gap: 100px;
       position: relative;
     }
 
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      width: 6px;
+      height: 100%;
+      background: linear-gradient(to bottom, #a85ae6, #6226a8);
+      z-index: 0;
+      border-radius: 3px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.6; }
+      100% { opacity: 1; }
+    }
+
     .era {
-      position: relative;
-      background-color: rgba(255, 255, 255, 0.05);
+      background-color: rgba(0, 0, 0, 0.5);
       border-left: 5px solid #a85ae6;
-      padding: 20px 30px;
-      border-radius: 10px;
+      padding: 25px 40px;
+      border-radius: 12px;
+      position: relative;
       animation: fadeIn 1s ease-in-out;
-      transition: background 0.3s;
+      z-index: 1;
     }
 
     .era h2 {
       font-size: 2em;
+      color: #dcbefe;
       margin-bottom: 15px;
-      color: #e6cfff;
     }
 
     .event {
       background-color: rgba(255, 255, 255, 0.1);
-      margin-bottom: 10px;
-      padding: 10px 15px;
-      border-radius: 8px;
-      position: relative;
+      margin-bottom: 12px;
+      padding: 12px 18px;
+      border-radius: 10px;
+      transition: transform 0.3s, background 0.3s;
       cursor: pointer;
     }
 
     .event:hover {
-      background-color: rgba(255, 255, 255, 0.2);
-    }
-
-    .tooltip {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background-color: #2a003a;
-      color: #fff;
-      padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-      width: 300px;
-      margin-top: 10px;
-      display: none;
-      z-index: 10;
-      font-size: 0.95em;
-    }
-
-    .event:hover .tooltip {
-      display: block;
+      background-color: rgba(255, 255, 255, 0.25);
+      transform: scale(1.05);
     }
 
     footer {
       text-align: center;
-      padding: 20px;
-      background-color: rgba(0, 0, 0, 0.4);
+      padding: 25px;
       font-size: 0.9em;
+      background-color: rgba(0, 0, 0, 0.6);
     }
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
+    .tooltip {
+      position: absolute;
+      background: #1e0033;
+      color: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      max-width: 300px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.6);
+      display: none;
+      z-index: 100;
+      font-size: 0.95em;
+      pointer-events: none;
+    }
   </style>
 </head>
 <body>
-  <div class="wave"></div>
   <main class="timeline">
-    <section class="era">
+    <section id="pre-historia" class="era">
       <h2>Pré-História</h2>
-      <div class="event">Paleolítico
-        <div class="tooltip">Período mais antigo da Pré-História, caracterizado pelo nomadismo, uso de ferramentas rudimentares de pedra lascada e a descoberta do fogo. Os grupos humanos viviam da caça, pesca e coleta.</div>
-      </div>
-      <div class="event">Neolítico
-        <div class="tooltip">Com o desenvolvimento da agricultura e da domesticação de animais, os humanos tornaram-se sedentários. Surgem as primeiras aldeias e cerâmicas, marcando uma revolução na vida humana.</div>
-      </div>
-      <div class="event">Idade dos Metais
-        <div class="tooltip">Período em que os humanos começaram a dominar a fundição de metais como cobre, bronze e ferro. Aparecem as primeiras cidades e formas complexas de organização social.</div>
-      </div>
+      <div class="event" data-description="Período em que os humanos viviam da caça e coleta, usando ferramentas rudimentares de pedra.">Paleolítico</div>
+      <div class="event" data-description="Período em que surgiu a agricultura, domesticação de animais e o sedentarismo.">Neolítico</div>
+      <div class="event" data-description="Início do uso de metais como cobre, bronze e ferro; surgem as primeiras cidades.">Idade dos Metais</div>
     </section>
 
-    <section class="era">
+    <section id="idade-antiga" class="era">
       <h2>Idade Antiga</h2>
-      <div class="event">Antiguidade Oriental
-        <div class="tooltip">Civilizações como Egito e Mesopotâmia floresceram com base na agricultura irrigada, estruturas sociais rígidas, teocracias e importantes avanços na escrita e arquitetura.</div>
-      </div>
-      <div class="event">Antiguidade Clássica
-        <div class="tooltip">Grécia e Roma dominaram esse período com grandes feitos filosóficos, políticos e militares. Democracia, cidadania, impérios e a filosofia ocidental têm raízes nessa era.</div>
-      </div>
-      <div class="event">Império Romano
-        <div class="tooltip">O Império Romano expandiu-se pela Europa, norte da África e Ásia. Deixou legado duradouro em leis, arquitetura, língua e a consolidação do cristianismo como religião dominante.</div>
-      </div>
+      <div class="event" data-description="Período das primeiras civilizações, como Egito e Mesopotâmia, com religião forte e poder centralizado.">Antiguidade Oriental</div>
+      <div class="event" data-description="Grécia e Roma se destacaram com filosofia, democracia e grandes impérios.">Antiguidade Clássica</div>
+      <div class="event" data-description="Expansão do Império Romano, consolidação do cristianismo e administração legal.">Império Romano</div>
     </section>
 
-    <section class="era">
+    <section id="idade-media" class="era">
       <h2>Idade Média</h2>
-      <div class="event">Feudalismo
-        <div class="tooltip">Sistema econômico e social baseado na posse de terras, onde senhores feudais ofereciam proteção aos servos em troca de trabalho. A vida girava em torno do campo e dos feudos.</div>
-      </div>
-      <div class="event">Cruzadas
-        <div class="tooltip">Expedições militares organizadas pela Igreja Católica para retomar Jerusalém dos muçulmanos. Tiveram impacto cultural, econômico e religioso na Europa medieval.</div>
-      </div>
-      <div class="event">Universidades
-        <div class="tooltip">Surgem as primeiras instituições de ensino superior, como em Bolonha e Paris, impulsionando o estudo das artes liberais, teologia, direito e medicina.</div>
-      </div>
+      <div class="event" data-description="Sistema feudal com servos, senhores e economia agrária descentralizada.">Feudalismo</div>
+      <div class="event" data-description="Guerras religiosas promovidas pela Igreja para retomar a Terra Santa.">Cruzadas</div>
+      <div class="event" data-description="Surgem universidades como centros de ensino, preservando saberes antigos.">Universidades</div>
     </section>
 
-    <section class="era">
+    <section id="idade-moderna" class="era">
       <h2>Idade Moderna</h2>
-      <div class="event">Renascimento
-        <div class="tooltip">Movimento cultural e intelectual que resgatou valores da Antiguidade, valorizando o ser humano, as artes e a ciência. Figuras como Da Vinci e Michelangelo se destacaram.</div>
-      </div>
-      <div class="event">Reforma Protestante
-        <div class="tooltip">Movimento liderado por Martinho Lutero que criticou práticas da Igreja Católica e deu origem às igrejas protestantes. Mudou profundamente a religião na Europa.</div>
-      </div>
-      <div class="event">Grandes Navegações
-        <div class="tooltip">Expedições marítimas que resultaram no contato entre continentes, formação de impérios coloniais e expansão do comércio global.</div>
-      </div>
+      <div class="event" data-description="Renascimento cultural com foco no ser humano, arte e ciência.">Renascimento</div>
+      <div class="event" data-description="Divisão da Igreja Católica por Lutero e outras reformas religiosas.">Reforma Protestante</div>
+      <div class="event" data-description="Expedições marítimas e colonização de novas terras.">Grandes Navegações</div>
     </section>
 
-    <section class="era">
+    <section id="idade-contemporanea" class="era">
       <h2>Idade Contemporânea</h2>
-      <div class="event">Revolução Francesa
-        <div class="tooltip">Importante marco da luta por liberdade, igualdade e fraternidade. Derrubou a monarquia absolutista e deu origem a novos modelos políticos modernos.</div>
-      </div>
-      <div class="event">Revolução Industrial
-        <div class="tooltip">Transformações econômicas e sociais a partir da introdução das máquinas. Crescimento das cidades, do trabalho fabril e da produção em massa.</div>
-      </div>
-      <div class="event">Guerras Mundiais
-        <div class="tooltip">Dois grandes conflitos armados no século XX que redefiniram as fronteiras políticas, econômicas e sociais do mundo.</div>
-      </div>
+      <div class="event" data-description="Queda da monarquia francesa e surgimento dos direitos civis modernos.">Revolução Francesa</div>
+      <div class="event" data-description="Adoção de máquinas e fábricas transformou o trabalho e a sociedade.">Revolução Industrial</div>
+      <div class="event" data-description="Duas guerras mundiais redefiniram fronteiras e relações internacionais.">Guerras Mundiais</div>
     </section>
   </main>
+
+  <div id="tooltip" class="tooltip"></div>
 
   <footer>
     <p>Desenvolvido por Vítor Hugo Reis</p>
   </footer>
+
+  <script>
+    const tooltip = document.getElementById('tooltip');
+    const events = document.querySelectorAll('.event');
+
+    events.forEach(event => {
+      event.addEventListener('mouseenter', (e) => {
+        tooltip.textContent = event.getAttribute('data-description');
+        tooltip.style.display = 'block';
+        const rect = event.getBoundingClientRect();
+        tooltip.style.top = `${rect.top + window.scrollY - 10}px`;
+        tooltip.style.left = `${rect.right + 10}px`;
+      });
+
+      event.addEventListener('mouseleave', () => {
+        tooltip.style.display = 'none';
+      });
+    });
+  </script>
 </body>
 </html>
