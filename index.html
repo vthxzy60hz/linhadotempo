@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Linha do Tempo Histórica</title>
+  <title>Linha do Tempo da História</title>
   <style>
     * {
       margin: 0;
@@ -13,156 +13,186 @@
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: url('https://cdn.pixabay.com/photo/2015/06/19/21/24/board-815315_1280.jpg') no-repeat center center fixed;
-      background-size: cover;
+      background: #0e0e0e;
       color: #fff;
+      scroll-behavior: smooth;
     }
 
     .timeline {
       padding: 60px 30px;
-      display: flex;
-      flex-direction: column;
-      gap: 100px;
       position: relative;
+      max-width: 1000px;
+      margin: auto;
     }
 
-    .timeline::before {
-      content: '';
+    .wave-line {
       position: absolute;
       left: 50%;
       top: 0;
       width: 6px;
       height: 100%;
-      background: linear-gradient(to bottom, #a85ae6, #6226a8);
+      background: repeating-linear-gradient(
+        180deg,
+        #a85ae6,
+        #a85ae6 10px,
+        transparent 10px,
+        transparent 20px
+      );
+      transform: translateX(-50%);
       z-index: 0;
-      border-radius: 3px;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0% { opacity: 1; }
-      50% { opacity: 0.6; }
-      100% { opacity: 1; }
     }
 
     .era {
-      background-color: rgba(0, 0, 0, 0.5);
-      border-left: 5px solid #a85ae6;
-      padding: 25px 40px;
-      border-radius: 12px;
+      margin: 40px 0;
       position: relative;
-      animation: fadeIn 1s ease-in-out;
+      padding-left: 80px;
       z-index: 1;
     }
 
     .era h2 {
       font-size: 2em;
-      color: #dcbefe;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
+      color: #a85ae6;
     }
 
     .event {
-      background-color: rgba(255, 255, 255, 0.1);
-      margin-bottom: 12px;
-      padding: 12px 18px;
+      position: relative;
+      margin-bottom: 20px;
+      padding: 10px 15px;
+      background: rgba(255, 255, 255, 0.05);
+      border-left: 4px solid #a85ae6;
       border-radius: 10px;
       transition: transform 0.3s, background 0.3s;
       cursor: pointer;
     }
 
     .event:hover {
-      background-color: rgba(255, 255, 255, 0.25);
-      transform: scale(1.05);
+      background-color: rgba(255, 255, 255, 0.1);
+      transform: scale(1.03);
+    }
+
+    .event .title {
+      font-weight: bold;
+      font-size: 1.1em;
+      color: #fff;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .event .info {
+      display: none;
+      margin-top: 10px;
+      color: #d4c2e6;
+      line-height: 1.4em;
+    }
+
+    .event:hover .info {
+      display: block;
+      animation: fadeIn 0.5s ease-in-out;
     }
 
     footer {
       text-align: center;
-      padding: 25px;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.4);
       font-size: 0.9em;
-      background-color: rgba(0, 0, 0, 0.6);
+      margin-top: 40px;
+      color: #a85ae6;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
-    }
-
-    .tooltip {
-      position: absolute;
-      background: #1e0033;
-      color: #fff;
-      padding: 15px;
-      border-radius: 10px;
-      max-width: 300px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.6);
-      display: none;
-      z-index: 100;
-      font-size: 0.95em;
-      pointer-events: none;
     }
   </style>
 </head>
 <body>
   <main class="timeline">
-    <section id="pre-historia" class="era">
+    <div class="wave-line"></div>
+
+    <section class="era">
       <h2>Pré-História</h2>
-      <div class="event" data-description="Período em que os humanos viviam da caça e coleta, usando ferramentas rudimentares de pedra.">Paleolítico</div>
-      <div class="event" data-description="Período em que surgiu a agricultura, domesticação de animais e o sedentarismo.">Neolítico</div>
-      <div class="event" data-description="Início do uso de metais como cobre, bronze e ferro; surgem as primeiras cidades.">Idade dos Metais</div>
+      <div class="event">
+        <span class="title">Paleolítico</span>
+        <div class="info">Período da pedra lascada. Os humanos eram nômades, viviam da caça, pesca e coleta. Descoberta do fogo e primeiras manifestações artísticas.</div>
+      </div>
+      <div class="event">
+        <span class="title">Neolítico</span>
+        <div class="info">Começo da agricultura e da domesticação de animais. Formação de vilas, ferramentas polidas e divisão de trabalho.</div>
+      </div>
+      <div class="event">
+        <span class="title">Idade dos Metais</span>
+        <div class="info">Uso do cobre, bronze e ferro. Desenvolvimento da metalurgia, surgimento das primeiras cidades e comércio.</div>
+      </div>
     </section>
 
-    <section id="idade-antiga" class="era">
+    <section class="era">
       <h2>Idade Antiga</h2>
-      <div class="event" data-description="Período das primeiras civilizações, como Egito e Mesopotâmia, com religião forte e poder centralizado.">Antiguidade Oriental</div>
-      <div class="event" data-description="Grécia e Roma se destacaram com filosofia, democracia e grandes impérios.">Antiguidade Clássica</div>
-      <div class="event" data-description="Expansão do Império Romano, consolidação do cristianismo e administração legal.">Império Romano</div>
+      <div class="event">
+        <span class="title">Antiguidade Oriental</span>
+        <div class="info">Civilizações como Egito e Mesopotâmia. Teocracia, escrita cuneiforme, hieróglifos, grandes obras como pirâmides e zigurates.</div>
+      </div>
+      <div class="event">
+        <span class="title">Antiguidade Clássica</span>
+        <div class="info">Grécia e Roma. Filosofia, democracia, teatro, direito romano, impérios e conquistas.</div>
+      </div>
+      <div class="event">
+        <span class="title">Império Romano</span>
+        <div class="info">Grande expansão territorial, organização jurídica, cristianismo, queda em 476 d.C.</div>
+      </div>
     </section>
 
-    <section id="idade-media" class="era">
+    <section class="era">
       <h2>Idade Média</h2>
-      <div class="event" data-description="Sistema feudal com servos, senhores e economia agrária descentralizada.">Feudalismo</div>
-      <div class="event" data-description="Guerras religiosas promovidas pela Igreja para retomar a Terra Santa.">Cruzadas</div>
-      <div class="event" data-description="Surgem universidades como centros de ensino, preservando saberes antigos.">Universidades</div>
+      <div class="event">
+        <span class="title">Feudalismo</span>
+        <div class="info">Sociedade hierárquica, economia agrária, servidão, senhores feudais e vassalagem.</div>
+      </div>
+      <div class="event">
+        <span class="title">Cruzadas</span>
+        <div class="info">Expedições militares cristãs contra os muçulmanos. Motivações religiosas e econômicas.</div>
+      </div>
+      <div class="event">
+        <span class="title">Universidades</span>
+        <div class="info">Surgem centros de estudos na Europa, fortalecendo o conhecimento e a filosofia escolástica.</div>
+      </div>
     </section>
 
-    <section id="idade-moderna" class="era">
+    <section class="era">
       <h2>Idade Moderna</h2>
-      <div class="event" data-description="Renascimento cultural com foco no ser humano, arte e ciência.">Renascimento</div>
-      <div class="event" data-description="Divisão da Igreja Católica por Lutero e outras reformas religiosas.">Reforma Protestante</div>
-      <div class="event" data-description="Expedições marítimas e colonização de novas terras.">Grandes Navegações</div>
+      <div class="event">
+        <span class="title">Renascimento</span>
+        <div class="info">Valorização do homem, das artes, ciências e ideias clássicas. Leonardo da Vinci, Michelangelo, Galileu.</div>
+      </div>
+      <div class="event">
+        <span class="title">Reforma Protestante</span>
+        <div class="info">Crítica à Igreja Católica, Martinho Lutero, novas religiões cristãs, Contrarreforma.</div>
+      </div>
+      <div class="event">
+        <span class="title">Grandes Navegações</span>
+        <div class="info">Exploração de mares, rotas comerciais, descobrimentos, colonização da América, África e Ásia.</div>
+      </div>
     </section>
 
-    <section id="idade-contemporanea" class="era">
+    <section class="era">
       <h2>Idade Contemporânea</h2>
-      <div class="event" data-description="Queda da monarquia francesa e surgimento dos direitos civis modernos.">Revolução Francesa</div>
-      <div class="event" data-description="Adoção de máquinas e fábricas transformou o trabalho e a sociedade.">Revolução Industrial</div>
-      <div class="event" data-description="Duas guerras mundiais redefiniram fronteiras e relações internacionais.">Guerras Mundiais</div>
+      <div class="event">
+        <span class="title">Revolução Francesa</span>
+        <div class="info">Liberdade, igualdade e fraternidade. Fim do absolutismo, início da cidadania moderna.</div>
+      </div>
+      <div class="event">
+        <span class="title">Revolução Industrial</span>
+        <div class="info">Transformações no trabalho e nas cidades. Máquinas, fábricas, urbanização e desigualdade.</div>
+      </div>
+      <div class="event">
+        <span class="title">Guerras Mundiais</span>
+        <div class="info">Conflitos globais, milhões de mortos, ascensão e queda de potências, Guerra Fria.</div>
+      </div>
     </section>
   </main>
 
-  <div id="tooltip" class="tooltip"></div>
-
   <footer>
-    <p>Desenvolvido por Vítor Hugo Reis</p>
+    <p>Feito por Vítor Hugo Reis</p>
   </footer>
-
-  <script>
-    const tooltip = document.getElementById('tooltip');
-    const events = document.querySelectorAll('.event');
-
-    events.forEach(event => {
-      event.addEventListener('mouseenter', (e) => {
-        tooltip.textContent = event.getAttribute('data-description');
-        tooltip.style.display = 'block';
-        const rect = event.getBoundingClientRect();
-        tooltip.style.top = `${rect.top + window.scrollY - 10}px`;
-        tooltip.style.left = `${rect.right + 10}px`;
-      });
-
-      event.addEventListener('mouseleave', () => {
-        tooltip.style.display = 'none';
-      });
-    });
-  </script>
 </body>
 </html>
