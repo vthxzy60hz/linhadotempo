@@ -1,198 +1,126 @@
-<!DOCTYPE html><html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Linha do Tempo da História</title>
+  <title>Linha do Tempo Animada</title>
   <style>
     body {
-      margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-color: #1e1e1e;
-      color: white;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
     }
+
+    h1 {
+      text-align: center;
+      margin: 40px 0 10px;
+    }
+
     .timeline {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       position: relative;
-      padding: 50px 20px;
+      width: 90%;
+      margin: 40px auto;
+      padding: 40px 0;
     }
-    .timeline::before {
-      content: '';
+
+    .line {
       position: absolute;
-      width: 6px;
-      background-color: orange;
+      left: 50%;
       top: 0;
       bottom: 0;
-      left: 50%;
+      width: 4px;
+      background: linear-gradient(to bottom, #ff6600, #ff9900);
       transform: translateX(-50%);
+      border-radius: 2px;
+      animation: wave 8s ease-in-out infinite;
     }
+
+    @keyframes wave {
+      0%, 100% { transform: translateX(-50%) rotate(0deg); }
+      50% { transform: translateX(-50%) rotate(0.5deg); }
+    }
+
     .event {
-      width: 100%;
-      max-width: 900px;
-      display: flex;
-      justify-content: space-between;
-      margin: 50px 0;
       position: relative;
+      width: 50%;
+      padding: 20px;
+      box-sizing: border-box;
     }
-    .event:nth-child(even) .text {
-      order: 2;
+
+    .event:nth-child(odd) {
+      left: 0;
+      text-align: right;
+    }
+
+    .event:nth-child(even) {
+      left: 50%;
       text-align: left;
     }
-    .event:nth-child(even) .image {
-      order: 1;
+
+    .event .content {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
     }
-    .text, .image {
-      width: 45%;
+
+    .event:hover .content {
+      transform: scale(1.05);
+    }
+
+    .event::before {
+      content: '';
+      position: absolute;
+      top: 30px;
+      width: 20px;
+      height: 20px;
+      background: #ff6600;
+      border-radius: 50%;
+      border: 4px solid white;
+      box-shadow: 0 0 0 2px #ff6600;
       z-index: 1;
     }
-    .text h2 {
-      color: orange;
+
+    .event:nth-child(odd)::before {
+      right: -10px;
     }
-    .text p {
-      font-size: 1rem;
-      line-height: 1.5;
-    }
-    .image img {
-      width: 100%;
-      border-radius: 8px;
-    }
-    @media screen and (max-width: 768px) {
-      .event {
-        flex-direction: column;
-        align-items: center;
-      }
-      .text, .image {
-        width: 90%;
-        text-align: center;
-      }
+
+    .event:nth-child(even)::before {
+      left: -10px;
     }
   </style>
 </head>
 <body>
-  <div class="timeline"><!-- Pré-História -->
-<div class="event">
-  <div class="text">
-    <h2>Pré-História</h2>
-    <p>Período anterior à escrita, marcado por uma vida nômade e uso de ferramentas rudimentares.</p>
-  </div>
-  <div class="image">
-    <img src="https://cdn.pixabay.com/photo/2020/01/30/20/20/caveman-4808577_960_720.jpg" alt="Pré-História">
-  </div>
-</div>
+  <h1>Linha do Tempo da História</h1>
+  <div class="timeline">
+    <div class="line"></div>
 
-<div class="event">
-  <div class="text">
-    <h2>Paleolítico</h2>
-    <p>Fase mais antiga da Pré-História, com humanos caçadores-coletores vivendo em cavernas.</p>
-  </div>
-  <div class="image">
-    <img src="https://cdn.pixabay.com/photo/2020/02/04/18/27/prehistoric-4819144_960_720.jpg" alt="Paleolítico">
-  </div>
-</div>
+    <!-- Exemplo de evento -->
+    <div class="event">
+      <div class="content">
+        <h3>Paleolítico</h3>
+        <p>Período inicial da Pré-História, com caça, coleta e ferramentas de pedra lascada.</p>
+      </div>
+    </div>
 
-<div class="event">
-  <div class="text">
-    <h2>Neolítico</h2>
-    <p>Agricultura, domesticação de animais e ferramentas mais elaboradas surgem.</p>
-  </div>
-  <div class="image">
-    <img src="https://cdn.pixabay.com/photo/2022/09/03/11/56/farming-7429652_960_720.jpg" alt="Neolítico">
-  </div>
-</div>
+    <div class="event">
+      <div class="content">
+        <h3>Neolítico</h3>
+        <p>Desenvolvimento da agricultura, domesticação de animais e primeiras aldeias.</p>
+      </div>
+    </div>
 
-<div class="event">
-  <div class="text">
-    <h2>Idade dos Metais</h2>
-    <p>Uso de cobre, bronze e ferro. Início da urbanização e surgimento das cidades.</p>
-  </div>
-  <div class="image">
-    <img src="https://cdn.pixabay.com/photo/2016/08/11/14/36/metal-1587493_960_720.jpg" alt="Idade dos Metais">
-  </div>
-</div>
+    <div class="event">
+      <div class="content">
+        <h3>Idade dos Metais</h3>
+        <p>Uso de metais para ferramentas e armas, surgimento das primeiras cidades.</p>
+      </div>
+    </div>
 
-<!-- Idade Antiga -->
-<div class="event">
-  <div class="text">
-    <h2>Antiguidade Oriental</h2>
-    <p>Período das primeiras grandes civilizações: Egito, Mesopotâmia, Índia e China Antigas.</p>
-  </div>
-  <div class="image">
-    <img src="https://cdn.pixabay.com/photo/2017/01/20/00/30/sphinx-1999435_960_720.jpg" alt="Antiguidade Oriental">
-  </div>
-</div>
-
-<div class="event">
-  <div class="text">
-    <h2>Antiguidade Clássica</h2>
-    <p>Grécia e Roma antigas, desenvolvimento da democracia, filosofia e direito romano.</p>
-  </div>
-  <div class="image">
-    <img src="https://cdn.pixabay.com/photo/2015/03/27/13/16/parthenon-694396_960_720.jpg" alt="Antiguidade Clássica">
-  </div>
-</div>
-
-<!-- Idade Moderna -->
-<div class="event">
-  <div class="text">
-    <h2>Renascimento</h2>
-    <p>Movimento cultural, artístico e científico que resgatou ideais clássicos da antiguidade.</p>
-  </div>
-  <div class="image">
-    <img src="https://cdn.pixabay.com/photo/2021/07/08/10/58/painting-6396907_960_720.jpg" alt="Renascimento">
-  </div>
-</div>
-
-<div class="event">
-  <div class="text">
-    <h2>Reformas Religiosas</h2>
-    <p>Movimentos que questionaram a Igreja Católica, como a Reforma Protestante.</p>
-  </div>
-  <div class="image">
-    <img src="https://cdn.pixabay.com/photo/2016/12/13/21/57/martin-luther-1901543_960_720.jpg" alt="Reformas Religiosas">
-  </div>
-</div>
-
-<div class="event">
-  <div class="text">
-    <h2>Expansão Marítima</h2>
-    <p>Grandes navegações europeias que descobriram novos continentes e rotas comerciais.</p>
-  </div>
-  <div class="image">
-    <img src="https://cdn.pixabay.com/photo/2015/07/13/20/40/ship-843438_960_720.jpg" alt="Expansão Marítima">
-  </div>
-</div>
-
-<!-- Idade Contemporânea -->
-<div class="event">
-  <div class="text">
-    <h2>Revolução Francesa</h2>
-    <p>Queda da monarquia na França e surgimento de ideais democráticos modernos.</p>
-  </div>
-  <div class="image">
-    <img src="https://cdn.pixabay.com/photo/2020/08/14/18/10/revolution-5488825_960_720.jpg" alt="Revolução Francesa">
-  </div>
-</div>
-
-<div class="event">
-  <div class="text">
-    <h2>Era Industrial</h2>
-    <p>Transição para a produção mecanizada, com impactos econômicos e sociais.</p>
-  </div>
-  <div class="image">
-    <img src="https://cdn.pixabay.com/photo/2017/01/19/23/47/industry-1996648_960_720.jpg" alt="Era Industrial">
-  </div>
-</div>
-
-<div class="event">
-  <div class="text">
-    <h2>Mundo Atual</h2>
-    <p>Sociedade globalizada, avanços tecnológicos e desafios socioambientais.</p>
-  </div>
-  <div class="image">
-    <img src="https://cdn.pixabay.com/photo/2016/12/09/08/50/network-1896380_960_720.jpg" alt="Mundo Atual">
-  </div>
-</div>
+    <!-- Adicione mais eventos aqui seguindo o mesmo padrão -->
 
   </div>
 </body>
