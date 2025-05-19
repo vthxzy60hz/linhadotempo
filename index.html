@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Linha do Tempo Histórica</title>
+  <title>Linha do Tempo da História</title>
   <style>
     * {
       margin: 0;
@@ -19,47 +19,49 @@
     }
 
     .timeline {
-      padding: 60px 20px;
+      padding: 60px 30px;
       position: relative;
+      max-width: 1000px;
+      margin: auto;
     }
 
-    .wave-line {
+    .line {
       position: absolute;
+      left: 50%;
       top: 0;
-      left: 0;
-      width: 100%;
+      width: 4px;
       height: 100%;
-      z-index: 0;
+      background: linear-gradient(#fff, #a85ae6);
+      border-radius: 2px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 rgba(255, 255, 255, 0.3); }
+      100% { box-shadow: 0 0 20px rgba(255, 255, 255, 0); }
     }
 
     .era {
-      background-color: rgba(255, 255, 255, 0.05);
-      border-left: 5px solid #a85ae6;
-      padding: 20px 30px;
-      border-radius: 10px;
-      animation: fadeIn 1s ease-in-out;
-      margin: 60px 0;
+      margin: 40px 0;
       position: relative;
-      z-index: 1;
-      width: 80%;
-    }
-
-    .era:nth-child(even) {
-      margin-left: auto;
+      padding-left: 80px;
     }
 
     .era h2 {
-      font-size: 1.8em;
-      margin-bottom: 15px;
+      font-size: 2em;
+      margin-bottom: 20px;
       color: #e6cfff;
     }
 
     .event {
-      background-color: rgba(255, 255, 255, 0.1);
-      margin-bottom: 10px;
+      position: relative;
+      margin-bottom: 20px;
       padding: 10px 15px;
-      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border-left: 4px solid #a85ae6;
+      border-radius: 10px;
       transition: transform 0.3s, background 0.3s;
+      cursor: pointer;
     }
 
     .event:hover {
@@ -67,63 +69,127 @@
       transform: scale(1.03);
     }
 
+    .event .title {
+      font-weight: bold;
+      font-size: 1.1em;
+      color: #fff;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .event .info {
+      display: none;
+      margin-top: 10px;
+      color: #ddd;
+      line-height: 1.4em;
+    }
+
+    .event:hover .info {
+      display: block;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
     footer {
       text-align: center;
       padding: 20px;
       background-color: rgba(0, 0, 0, 0.4);
       font-size: 0.9em;
+      margin-top: 40px;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
   <main class="timeline">
-    <svg class="wave-line" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 400" preserveAspectRatio="none">
-      <path d="M0,200 C250,100 750,300 1000,200" fill="transparent" stroke="#a85ae6" stroke-width="6"/>
-    </svg>
+    <div class="line"></div>
 
-    <section id="pre-historia" class="era">
+    <section class="era">
       <h2>Pré-História</h2>
-      <div class="event">Paleolítico: Uso de ferramentas de pedra e vida nômade.</div>
-      <div class="event">Neolítico: Agricultura, domesticação e sedentarismo.</div>
-      <div class="event">Idade dos Metais: Surgimento da metalurgia e primeiras cidades.</div>
+      <div class="event">
+        <span class="title">Paleolítico</span>
+        <div class="info">Período da pedra lascada. Os humanos eram nômades, viviam da caça, pesca e coleta. Descoberta do fogo e primeiras manifestações artísticas.</div>
+      </div>
+      <div class="event">
+        <span class="title">Neolítico</span>
+        <div class="info">Começo da agricultura e da domesticação de animais. Formação de vilas, ferramentas polidas e divisão de trabalho.</div>
+      </div>
+      <div class="event">
+        <span class="title">Idade dos Metais</span>
+        <div class="info">Uso do cobre, bronze e ferro. Desenvolvimento da metalurgia, surgimento das primeiras cidades e comércio.</div>
+      </div>
     </section>
 
-    <section id="idade-antiga" class="era">
+    <section class="era">
       <h2>Idade Antiga</h2>
-      <div class="event">Antiguidade Oriental: Egito, Mesopotâmia, cultura teocrática.</div>
-      <div class="event">Antiguidade Clássica: Grécia e Roma, filosofia, política e guerra.</div>
-      <div class="event">Império Romano: Expansão, direito romano e cristianismo.</div>
+      <div class="event">
+        <span class="title">Antiguidade Oriental</span>
+        <div class="info">Civilizações como Egito e Mesopotâmia. Teocracia, escrita cuneiforme, hieróglifos, grandes obras como pirâmides e zigurates.</div>
+      </div>
+      <div class="event">
+        <span class="title">Antiguidade Clássica</span>
+        <div class="info">Grécia e Roma. Filosofia, democracia, teatro, direito romano, impérios e conquistas.</div>
+      </div>
+      <div class="event">
+        <span class="title">Império Romano</span>
+        <div class="info">Grande expansão territorial, organização jurídica, cristianismo, queda em 476 d.C.</div>
+      </div>
     </section>
 
-    <section id="idade-media" class="era">
+    <section class="era">
       <h2>Idade Média</h2>
-      <div class="event">Feudalismo: Economia rural, senhores e servos.</div>
-      <div class="event">Cruzadas: Guerras religiosas entre cristãos e muçulmanos.</div>
-      <div class="event">Universidades: Surgimento do ensino formal na Europa.</div>
+      <div class="event">
+        <span class="title">Feudalismo</span>
+        <div class="info">Sociedade hierárquica, economia agrária, servidão, senhores feudais e vassalagem.</div>
+      </div>
+      <div class="event">
+        <span class="title">Cruzadas</span>
+        <div class="info">Expedições militares cristãs contra os muçulmanos. Motivações religiosas e econômicas.</div>
+      </div>
+      <div class="event">
+        <span class="title">Universidades</span>
+        <div class="info">Surgem centros de estudos na Europa, fortalecendo o conhecimento e a filosofia escolástica.</div>
+      </div>
     </section>
 
-    <section id="idade-moderna" class="era">
+    <section class="era">
       <h2>Idade Moderna</h2>
-      <div class="event">Renascimento: Arte e ciência inspiradas na antiguidade.</div>
-      <div class="event">Reforma Protestante: Divisão do cristianismo na Europa.</div>
-      <div class="event">Grandes Navegações: Expansão marítima e colonialismo.</div>
+      <div class="event">
+        <span class="title">Renascimento</span>
+        <div class="info">Valorização do homem, das artes, ciências e ideias clássicas. Leonardo da Vinci, Michelangelo, Galileu.</div>
+      </div>
+      <div class="event">
+        <span class="title">Reforma Protestante</span>
+        <div class="info">Crítica à Igreja Católica, Martinho Lutero, novas religiões cristãs, Contrarreforma.</div>
+      </div>
+      <div class="event">
+        <span class="title">Grandes Navegações</span>
+        <div class="info">Exploração de mares, rotas comerciais, descobrimentos, colonização da América, África e Ásia.</div>
+      </div>
     </section>
 
-    <section id="idade-contemporanea" class="era">
+    <section class="era">
       <h2>Idade Contemporânea</h2>
-      <div class="event">Revolução Francesa: Queda da monarquia e direitos civis.</div>
-      <div class="event">Revolução Industrial: Mecanização e urbanização.</div>
-      <div class="event">Guerras Mundiais: Conflitos globais e mudanças políticas.</div>
+      <div class="event">
+        <span class="title">Revolução Francesa</span>
+        <div class="info">Liberdade, igualdade e fraternidade. Fim do absolutismo, início da cidadania moderna.</div>
+      </div>
+      <div class="event">
+        <span class="title">Revolução Industrial</span>
+        <div class="info">Transformações no trabalho e nas cidades. Máquinas, fábricas, urbanização e desigualdade.</div>
+      </div>
+      <div class="event">
+        <span class="title">Guerras Mundiais</span>
+        <div class="info">Conflitos globais, milhões de mortos, ascensão e queda de potências, Guerra Fria.</div>
+      </div>
     </section>
   </main>
 
   <footer>
-    <p>Desenvolvido por Vítor Hugo Reis</p>
+    <p>Feito por Vítor Hugo Reis</p>
   </footer>
 </body>
 </html>
