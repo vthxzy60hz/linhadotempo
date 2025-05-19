@@ -21,52 +21,82 @@
       color: #ff9800;
     }
 
-    .container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      padding: 40px;
-    }
-
-    .card {
+    .timeline {
       position: relative;
-      background: #1e1e1e;
-      border-radius: 15px;
-      overflow: hidden;
-      height: 200px;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-      box-shadow: 0 0 20px rgba(255, 152, 0, 0.2);
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 0;
     }
 
-    .card:hover {
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 6px;
+      background-color: #ff9800;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -3px;
+    }
+
+    .container {
+      padding: 20px 40px;
+      position: relative;
+      background-color: inherit;
+      width: 50%;
+    }
+
+    .left {
+      left: 0;
+    }
+
+    .right {
+      left: 50%;
+    }
+
+    .content {
+      padding: 20px;
+      background-color: #1e1e1e;
+      position: relative;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(255, 152, 0, 0.3);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .content:hover {
       transform: scale(1.05);
     }
 
-    .card-title {
+    .container::after {
+      content: " ";
       position: absolute;
-      bottom: 20px;
-      left: 20px;
-      font-size: 1.5em;
-      font-weight: bold;
+      width: 25px;
+      height: 25px;
+      right: -17px;
+      background-color: #ff9800;
+      border: 4px solid #1f1f1f;
+      top: 15px;
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    .right::after {
+      left: -16px;
+    }
+
+    .left {
+      float: left;
+      clear: both;
+    }
+
+    .right {
+      float: right;
+      clear: both;
+    }
+
+    .content h2 {
+      margin-top: 0;
       color: #ff9800;
-    }
-
-    .card-content {
-      position: absolute;
-      top: 0;
-      left: 0;
-      background: rgba(0, 0, 0, 0.9);
-      color: #fff;
-      padding: 20px;
-      height: 100%;
-      width: 100%;
-      opacity: 0;
-      transition: opacity 0.4s ease;
-    }
-
-    .card:hover .card-content {
-      opacity: 1;
     }
 
     footer {
@@ -74,64 +104,64 @@
       padding: 20px;
       color: #999;
     }
+
+    @media screen and (max-width: 768px) {
+      .container {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+      }
+      .timeline::after {
+        left: 31px;
+      }
+      .right {
+        left: 0%;
+      }
+      .right::after {
+        left: 15px;
+      }
+    }
   </style>
 </head>
 <body>
 
   <header>Linha do Tempo Interativa</header>
 
-  <div class="container">
-
-    <!-- PRÉ-HISTÓRIA -->
-    <div class="card">
-      <div class="card-title">Pré-História</div>
-      <div class="card-content">
-        <h3>Paleolítico</h3>
-        <p>Período das cavernas, com ferramentas de pedra lascada e vida nômade.</p>
-        <h3>Neolítico</h3>
-        <p>Começo da agricultura, domesticação de animais e surgimento das aldeias.</p>
-        <h3>Idade dos Metais</h3>
-        <p>Uso de cobre, bronze e ferro. Aumenta o comércio e surgem as primeiras cidades.</p>
+  <div class="timeline">
+    <div class="container left">
+      <div class="content">
+        <h2>Pré-História</h2>
+        <p><strong>Paleolítico:</strong> Período das cavernas, ferramentas de pedra e vida nômade.</p>
+        <p><strong>Neolítico:</strong> Agricultura, aldeias e início da vida sedentária.</p>
+        <p><strong>Idade dos Metais:</strong> Uso do cobre, bronze e ferro, e surgimento das cidades.</p>
       </div>
     </div>
 
-    <!-- IDADE ANTIGA -->
-    <div class="card">
-      <div class="card-title">Idade Antiga</div>
-      <div class="card-content">
-        <h3>Antiguidade Oriental</h3>
-        <p>Civilizações como Egito, Mesopotâmia e China, com escrita e religião politeísta.</p>
-        <h3>Antiguidade Clássica</h3>
-        <p>Grécia e Roma com destaque na filosofia, democracia e direito.</p>
+    <div class="container right">
+      <div class="content">
+        <h2>Idade Antiga</h2>
+        <p><strong>Antiguidade Oriental:</strong> Egito, Mesopotâmia e desenvolvimento da escrita.</p>
+        <p><strong>Antiguidade Clássica:</strong> Grécia e Roma, filosofia e democracia.</p>
       </div>
     </div>
 
-    <!-- IDADE MODERNA -->
-    <div class="card">
-      <div class="card-title">Idade Moderna</div>
-      <div class="card-content">
-        <h3>Renascimento</h3>
-        <p>Valorização da ciência, arte e do ser humano. Leonardo da Vinci e Michelangelo brilham.</p>
-        <h3>Grandes Navegações</h3>
-        <p>Explorações marítimas e descobrimentos. Expansão territorial da Europa.</p>
-        <h3>Reforma Protestante</h3>
-        <p>Movimento religioso que criticou a Igreja Católica, liderado por Martinho Lutero.</p>
+    <div class="container left">
+      <div class="content">
+        <h2>Idade Moderna</h2>
+        <p><strong>Renascimento:</strong> Valorização das artes, ciências e do humanismo.</p>
+        <p><strong>Grandes Navegações:</strong> Descobrimentos marítimos e expansão territorial.</p>
+        <p><strong>Reforma Protestante:</strong> Ruptura com a Igreja Católica liderada por Lutero.</p>
       </div>
     </div>
 
-    <!-- IDADE CONTEMPORÂNEA -->
-    <div class="card">
-      <div class="card-title">Idade Contemporânea</div>
-      <div class="card-content">
-        <h3>Revolução Francesa</h3>
-        <p>Derrubada da monarquia e nascimento da república com ideias de liberdade e igualdade.</p>
-        <h3>Revolução Industrial</h3>
-        <p>Máquinas e fábricas mudaram o mundo, com grande urbanização e novas tecnologias.</p>
-        <h3>Guerras Mundiais</h3>
-        <p>Conflitos globais que marcaram o século XX, com milhões de mortos e mudanças políticas.</p>
+    <div class="container right">
+      <div class="content">
+        <h2>Idade Contemporânea</h2>
+        <p><strong>Revolução Francesa:</strong> Queda da monarquia e ideias de liberdade e igualdade.</p>
+        <p><strong>Revolução Industrial:</strong> Máquinas, fábricas e urbanização acelerada.</p>
+        <p><strong>Guerras Mundiais:</strong> Conflitos globais do século XX que mudaram o mundo.</p>
       </div>
     </div>
-
   </div>
 
   <footer>Trabalho de História — Vítor Hugo Reis</footer>
