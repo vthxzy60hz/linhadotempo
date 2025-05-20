@@ -13,37 +13,22 @@
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: #0e0e0e;
+      background: #0e0e0e url('https://i.imgur.com/9FySvXD.png') repeat-y center;
+      background-size: contain;
       color: #fff;
       scroll-behavior: smooth;
     }
 
     .timeline {
       padding: 60px 30px;
-      position: relative;
       max-width: 1000px;
       margin: auto;
     }
 
-    .wave-line {
-      position: absolute;
-      left: 50%;
-      top: 0;
-      width: 100px;
-      height: 100%;
-      background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxW4nSsUcvutGtyyWyugJmpKjnzg5N99VcIw&s') repeat-y center;
-      background-size: contain;
-      filter: hue-rotate(270deg) brightness(1.2); /* cor roxa */
-      transform: translateX(-50%);
-      opacity: 0.6;
-      z-index: 0;
-    }
-
     .era {
       margin: 40px 0;
-      position: relative;
       padding-left: 80px;
-      z-index: 1;
+      position: relative;
     }
 
     .era h2 {
@@ -53,12 +38,11 @@
     }
 
     .event {
-      position: relative;
-      margin-bottom: 20px;
-      padding: 15px 20px;
       background: rgba(255, 255, 255, 0.05);
       border-left: 4px solid #a85ae6;
       border-radius: 10px;
+      padding: 10px 15px;
+      margin-bottom: 20px;
       transition: transform 0.3s, background 0.3s;
       cursor: pointer;
     }
@@ -70,10 +54,10 @@
 
     .event .title {
       font-weight: bold;
-      font-size: 1.3em;
+      font-size: 1.2em;
       color: #fff;
-      display: block;
       margin-bottom: 5px;
+      display: block;
     }
 
     .event .info {
@@ -81,7 +65,6 @@
       margin-top: 10px;
       color: #d4c2e6;
       line-height: 1.6em;
-      font-size: 1em;
     }
 
     .event:hover .info {
@@ -89,44 +72,37 @@
       animation: fadeIn 0.5s ease-in-out;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
     footer {
       text-align: center;
       padding: 20px;
       background-color: rgba(0, 0, 0, 0.4);
       font-size: 0.9em;
-      margin-top: 40px;
       color: #a85ae6;
+      margin-top: 60px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
   <main class="timeline">
-    <div class="wave-line"></div>
 
     <section class="era">
       <h2>Pré-História</h2>
       <div class="event">
         <span class="title">Paleolítico</span>
-        <div class="info">
-          O Paleolítico é o período mais antigo da Pré-História, conhecido como a "Idade da Pedra Lascada". Os humanos eram nômades, viviam em cavernas e dependiam da caça, pesca e coleta. Neste período, o fogo foi descoberto, e surgiram as primeiras manifestações artísticas como as pinturas rupestres.
-        </div>
+        <div class="info">O período mais longo da história humana, caracterizado pelo uso de ferramentas de pedra lascada, vida nômade, caça, pesca e coleta. Nesse período, os primeiros seres humanos também aprenderam a usar o fogo e criaram as primeiras expressões artísticas, como pinturas rupestres.</div>
       </div>
       <div class="event">
         <span class="title">Neolítico</span>
-        <div class="info">
-          No Neolítico, ocorreu a chamada Revolução Agrícola. O ser humano passou a praticar agricultura e domesticação de animais, tornando-se sedentário. Surgiram as primeiras aldeias, a divisão social do trabalho e ferramentas mais avançadas, como instrumentos polidos de pedra.
-        </div>
+        <div class="info">Marcou uma revolução na vida humana com o surgimento da agricultura, domesticação de animais e formação de vilas fixas. Ferramentas começaram a ser polidas, houve especialização de trabalho e surgiram as primeiras práticas religiosas mais complexas.</div>
       </div>
       <div class="event">
         <span class="title">Idade dos Metais</span>
-        <div class="info">
-          Marcada pelo uso de metais como cobre, bronze e ferro, essa fase permitiu a produção de armas e ferramentas mais resistentes. A metalurgia impulsionou o comércio, o surgimento de cidades e sistemas mais complexos de organização social e política.
-        </div>
+        <div class="info">Caracterizada pelo uso de metais como cobre, bronze e ferro. Houve grande avanço tecnológico, surgimento das primeiras cidades, intensificação do comércio e aumento da complexidade social e política.</div>
       </div>
     </section>
 
@@ -134,21 +110,15 @@
       <h2>Idade Antiga</h2>
       <div class="event">
         <span class="title">Antiguidade Oriental</span>
-        <div class="info">
-          Período das primeiras grandes civilizações na Mesopotâmia, Egito, Índia e China. Destacaram-se pelas teocracias (governo baseado na religião), pela invenção da escrita (como os hieróglifos e a cuneiforme) e pelas grandes construções como pirâmides e zigurates.
-        </div>
+        <div class="info">Inclui civilizações como Egito, Mesopotâmia, Fenícia, Hebreus e Persas. Essas sociedades desenvolveram governos teocráticos, sistemas de escrita, arquitetura monumental e religiões politeístas.</div>
       </div>
       <div class="event">
         <span class="title">Antiguidade Clássica</span>
-        <div class="info">
-          Desenvolvida principalmente por Grécia e Roma. Na Grécia floresceram a democracia, a filosofia (Sócrates, Platão, Aristóteles), as artes e os Jogos Olímpicos. Roma contribuiu com o direito, engenharia, exército organizado e a expansão do cristianismo.
-        </div>
+        <div class="info">Grécia e Roma dominaram essa fase, trazendo avanços na filosofia, arte, política (como a democracia), literatura e direito. Esses modelos influenciaram profundamente a civilização ocidental até os dias de hoje.</div>
       </div>
       <div class="event">
         <span class="title">Império Romano</span>
-        <div class="info">
-          Um dos maiores impérios da história, com forte influência cultural, jurídica e arquitetônica. Foi marcado por sua grande expansão territorial, pela construção de estradas e aquedutos, e pela consolidação do cristianismo. Sua queda em 476 d.C. marca o fim da Idade Antiga.
-        </div>
+        <div class="info">Com vasto território, o Império Romano construiu estradas, aquedutos, cidades e sistemas de leis. O cristianismo surgiu e se espalhou pelo império, que acabou ruindo no século V d.C. devido a crises internas e invasões bárbaras.</div>
       </div>
     </section>
 
@@ -156,21 +126,15 @@
       <h2>Idade Média</h2>
       <div class="event">
         <span class="title">Feudalismo</span>
-        <div class="info">
-          Sistema político, econômico e social baseado na posse de terras. A sociedade era dividida entre nobres, clero e servos. A economia era agrária, e o poder estava concentrado nos senhores feudais. Era uma época marcada por forte influência da Igreja Católica.
-        </div>
+        <div class="info">Sistema social, político e econômico baseado em vínculos de dependência entre senhores e servos. A terra era a principal riqueza, e a vida girava em torno dos feudos, com pouca mobilidade social.</div>
       </div>
       <div class="event">
         <span class="title">Cruzadas</span>
-        <div class="info">
-          Expedições militares organizadas pela Igreja Católica com o objetivo de reconquistar Jerusalém. Também tinham motivações econômicas e políticas. Ajudaram a reabrir rotas comerciais entre o Oriente e o Ocidente.
-        </div>
+        <div class="info">Expedições religiosas promovidas pela Igreja Católica para reconquistar Jerusalém. Também foram motivadas por interesses econômicos e políticos, e ajudaram a reativar o comércio europeu.</div>
       </div>
       <div class="event">
         <span class="title">Universidades</span>
-        <div class="info">
-          No final da Idade Média, surgem as primeiras universidades na Europa. Elas se tornaram centros de saber, influenciadas pela filosofia escolástica e ajudaram na formação de uma nova elite intelectual que seria fundamental na transição para a Idade Moderna.
-        </div>
+        <div class="info">Aparecimento de centros de saber como Bolonha e Paris. A educação passou a ter estrutura formal e baseada na escolástica, misturando filosofia clássica com os dogmas religiosos cristãos.</div>
       </div>
     </section>
 
@@ -178,21 +142,15 @@
       <h2>Idade Moderna</h2>
       <div class="event">
         <span class="title">Renascimento</span>
-        <div class="info">
-          Movimento cultural que valorizava o ser humano, a razão e o retorno aos valores clássicos da Grécia e Roma. Destacaram-se artistas como Leonardo da Vinci e Michelangelo, além do avanço das ciências com Galileu e Copérnico.
-        </div>
+        <div class="info">Movimento cultural que valorizou o conhecimento humano, as artes e as ciências. Inspirado na antiguidade clássica, rompeu com a visão teocêntrica medieval e trouxe figuras como Da Vinci, Michelangelo e Galileu.</div>
       </div>
       <div class="event">
         <span class="title">Reforma Protestante</span>
-        <div class="info">
-          Movimento religioso liderado por Martinho Lutero que criticava práticas da Igreja Católica, como a venda de indulgências. Deu origem a novas religiões cristãs e provocou a Contrarreforma por parte da Igreja.
-        </div>
+        <div class="info">Iniciada por Martinho Lutero, criticou a venda de indulgências e abusos da Igreja Católica. Deu origem a diversas igrejas protestantes e levou à Contrarreforma Católica.</div>
       </div>
       <div class="event">
         <span class="title">Grandes Navegações</span>
-        <div class="info">
-          Expedições marítimas realizadas por países europeus em busca de novas rotas comerciais. Resultaram na descoberta de novas terras, como a América, e no início da colonização de vários continentes, com profundas consequências sociais e econômicas.
-        </div>
+        <div class="info">Viagens de exploração marítima feitas por portugueses e espanhóis, como a descoberta da América e o caminho marítimo para a Índia. Expandiram o comércio e iniciaram a colonização de novos continentes.</div>
       </div>
     </section>
 
@@ -200,23 +158,18 @@
       <h2>Idade Contemporânea</h2>
       <div class="event">
         <span class="title">Revolução Francesa</span>
-        <div class="info">
-          Revolta popular que derrubou a monarquia absolutista na França em 1789. Seus ideais de liberdade, igualdade e fraternidade influenciaram todo o mundo ocidental e deram início à cidadania moderna.
-        </div>
+        <div class="info">Movimento que derrubou a monarquia absolutista na França e instaurou os princípios de liberdade, igualdade e fraternidade. Inspirou transformações políticas e sociais por todo o mundo.</div>
       </div>
       <div class="event">
         <span class="title">Revolução Industrial</span>
-        <div class="info">
-          Transformou profundamente o modo de produção e a vida nas cidades. Máquinas substituíram o trabalho manual, surgiram as fábricas, e a urbanização acelerou. Também causou desigualdades sociais e exploração da mão de obra.
-        </div>
+        <div class="info">Transformou a produção artesanal em industrial, com o uso de máquinas, aumento das cidades, do consumo e do capitalismo. Trouxe também problemas sociais como desigualdade e exploração do trabalho.</div>
       </div>
       <div class="event">
         <span class="title">Guerras Mundiais</span>
-        <div class="info">
-          Dois grandes conflitos globais (1914–1918 e 1939–1945) marcaram a primeira metade do século XX. Provocaram milhões de mortes, mudanças geopolíticas profundas e o surgimento da Guerra Fria entre EUA e URSS.
-        </div>
+        <div class="info">Duas grandes guerras (1914-1918 e 1939-1945) que mudaram o equilíbrio de poder no mundo, causaram milhões de mortes e levaram à criação de organizações como a ONU e à Guerra Fria.</div>
       </div>
     </section>
+
   </main>
 
   <footer>
